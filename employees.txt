@@ -6,3 +6,5 @@ Bashful
 Sleepy
 Doc
 Snow
+Bob
+Frank
