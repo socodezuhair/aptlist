@@ -1,5 +1,5 @@
 # Apartment List Exercise
-README file for the Aparment List coding exercise
+README file for the Apartment List coding exercise
 
 ## Approach:
 Based on the requirements, I first tried to figure out how to shuffle the list and how to break it up
