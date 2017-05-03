@@ -9,7 +9,11 @@ While perhaps not ideal, I decided to make the default group size equal to 3.  S
 
 I started off by just creating a simple list from the alphabet to put the basic code in place.  The letters of the alphabet can later be replaced by employee names.  I shuffle the list and then break it up into appropriate groups, having print statements along the way to debug the code.  This approach generally works and we don't get a group bigger than five.
 
-Since general approach worked, I productionalized the code to include the other features such as adding an employee.
+Since the general approach worked, I productionalized the code to include the other features such as adding an employee.
+
+This included creating a text file with the names of the employees.  The program will read the file to get a list of all the employees.  The add and remove functionality updates the file accordingly, using the name of the employee entered by the user.
+
+I also optimized the code a little bit.
 
 ## Documentation
 The program is simple enough and will prompt the user for what to do.
@@ -17,6 +21,6 @@ The program is simple enough and will prompt the user for what to do.
 ### Requirements
 Python 2 is installed
 
-To execute:
-1.) clone repo
-2.) run the command:  python aptlist.py
+### To execute:
+- clone repo
+- run the command: python aptlist.py
