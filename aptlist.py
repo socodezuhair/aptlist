@@ -1,8 +1,7 @@
 import random
 import string
 
-# Generate list
-# Later on, this can be reading from a file/DB
+# Generate employee list by reading from a file
 empList = open('employees.txt').read().splitlines()
 print("%d total employees" % len(empList))
 
@@ -15,20 +14,17 @@ mod = divMod[1]
 # This is where the magic happens
 random.shuffle(empList,random.random)
 
-
 print("Shuffled list: %s" % empList)
 
 #Generate groups based on the numbers above.
 for x in range(div):
-	# We need to do this because of the way lists are sliced (zero index versus 1)
-	# There could be a more elegant way to do it, just keeping it simple in the
-	# interest of time.
-	if x > 0:
-		start = x*3
-	else:
-		start = 0
-	print("Group #%d: %s" % (x,empList[start:start+3] ))
+	print("Group #%d: %s" % (x, empList[0:3] ))
+	del empList[0:3]
 
 # Print the final group
-print("Group #%d: %s" % (x+1, empList[div*3:(div*3) + 3+mod]))
+print("Group #%d: %s" % (x+1, empList[0:mod+3]))
+del empList[0:mod+3]
 
+# Check the number of employees without a table
+# This can just be the length of our list of employees.  If len(list) == 0, all employees have a seat
+print("\nNumber of employees without a table: %d\n" % len(empList))
