@@ -3,7 +3,7 @@ import string
 
 # Generate list
 # Later on, this can be reading from a file/DB
-empList = list(string.ascii_lowercase[:23])
+empList = open('employees.txt').read().splitlines()
 print("%d total employees" % len(empList))
 
 # Get the mod and div, to be used to create the groups later
