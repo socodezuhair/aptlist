@@ -45,46 +45,62 @@ def printGroupList():
 
 	empList = {}
 
+	# Read employee list in csv format.  csv.reader returns a tuple, that I can use to populate
+	# my dictionary as I choose.
 	data = csv.reader(open(EMPFILE, 'r'))
 	for row in data:
 		if row[0] not in empList:
 			empList[row[0]] = []
 		empList[row[0]].append(row[1])
 
-	# print(empList)
-
+	# Loop through all the employees
 	for employee in empList:
-		# print(empList[employee])
+		
+		# The case where multiple people have the same first name
 		if len(empList[employee]) > 1:
+			# Resetting variables
 			l = empList[employee]
 			d = {}
 			letters = []
 			counter = 1
 
+			# This is the array that holds the last name
+			# of the people with the same first name, e.g. [Dost, Davidson, Davids, Hayden]
+			# While the length of the array is > 0
 			while len(l) > 0:
+				# Loop through and see how many last names have the first initial
+				# and add to last name dictionary
 				for x in range(len(l)):
 					initial = l[x][0:counter]
-					#print(initial)
 					if initial not in d:
 						d[initial] = []
 					d[initial].append(l[x])
 
+				# For all the first initials we read, see how many have more than one person
+				# for that initial.  For example, for D, we will have 3 and for H we will have 1
 				for letter in d:
 					if len(d[letter]) == 1:
-						#print(d[letter])
+						# Remove this name from the array, so we don't process in the next iteration of the loop
+						# using the previous example, we are removing Hayden after the first pass
 						l.remove(d[letter][0])
+						# Add to another array, so we can delete from the dictionary.  Python does not allow
+						# dictionaries to mutate during an iteration
 						letters.append(letter)
+				# Remove from the dictionary and add to our employees list
 				for letter in letters:
 					employeeList.append("%s %s" % (employee, letter))
 					del d[letter]
-				#print(l)
+				
+				# Increment counter.
+				# At this point, the array will not have Hayden and will only have the three Chris' with the last name starting with
+				# the initial D.  By incrementing the counter, we will look at the first two letters in the next iteration.  This will
+				# eliminate Dost.  We will keep doing this until the array is empty and we come out of the WHILE loop above.
 				counter = counter + 1
 				d = {}
 				letters = []
 		else:
+			# We didn't have multiple people with this first name, so we just add the first name.
 			employeeList.append(employee)
-
-	# print("%d total employees" % len(empList))
 
 	# Get the mod and div, to be used to create the groups later
 	divMod = divmod(len(employeeList), 3)
