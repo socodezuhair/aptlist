@@ -1,10 +1,7 @@
-Happy
-Dopey
-Grumpy
-Sneezy
-Bashful
-Sleepy
-Doc
-Snow
-Bob
-Frank
+Frank,Sinatra
+Chris,Dost
+Chris,Davidson
+Chris,Davids
+Chris,Hayden
+Frank,Waters
+Joe,Schmoe
